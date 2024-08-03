@@ -1,5 +1,7 @@
 FROM nvidia/cuda:12.2.0-runtime-ubuntu22.04
 
+ARG JUPYTER_LAB_PORT
+ENV JUPYTER_LAB_PORT ${JUPYTER_LAB_PORT}
 ENV DEBIAN_FRONTEND=noninteractive LANG=C TZ=UTC
 ENV TERM linux
 
@@ -31,4 +33,4 @@ RUN pip3 install -r requirements.txt
 EXPOSE 8088
 
 # Run jupyter lab
-CMD ["jupyter", "lab", "--port=8088", "--no-browser", "--ip=0.0.0.0", "--allow-root"]
+CMD jupyter lab --port=${JUPYTER_LAB_PORT} --no-browser --ip=0.0.0.0 --allow-root
