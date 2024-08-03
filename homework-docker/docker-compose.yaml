@@ -1,8 +1,13 @@
 services:
   pytorch-gpu-node:
-    build: windows
+    build:
+      context: .
+      args:
+        JUPYTER_LAB_PORT: ${JUPYTER_LAB_PORT}
     ports:
-      - "8088:8088"
+      - ${JUPYTER_LAB_PORT}:${JUPYTER_LAB_PORT}
+    volumes:
+      - ./jupyter-data:/playground
     deploy:
       resources:
         reservations:
