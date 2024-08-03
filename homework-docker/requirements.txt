@@ -1,0 +1,8 @@
+setuptools
+numpy
+matplotlib
+opencv-python
+torch
+torchvision
+tensorflow
+jupyterlab
